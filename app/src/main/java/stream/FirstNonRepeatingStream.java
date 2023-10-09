@@ -25,9 +25,12 @@ public class FirstNonRepeatingStream{
 
 	private void nodeRemove(char ch){
 		int code = (int)ch;
+		//System.out.println("\nRemoving " + ch);
 
 		if (stream[code] == head){
+			//System.out.println("\tch is the head");
 			if (stream[code] == tail){
+				//System.out.println("\tch is the tail");
 				head = tail = null;
 				return;
 			}
@@ -35,13 +38,17 @@ public class FirstNonRepeatingStream{
 			head = stream[code].next;
 			if (head != null)
 				head.prev = null;
+			//System.out.println("\tNew head is: " + head.ch);
 			return;
 		}
 
 		if (stream[code] == tail){
+			//System.out.println("\tch is the tail");
 			tail = tail.prev;
-			if (tail != null)
+			if (tail != null){
 				tail.next = null;
+				//System.out.println("\tNew tail is: " + tail.ch);
+			}
 			return;
 		}
 
@@ -74,6 +81,8 @@ public class FirstNonRepeatingStream{
 	public void add(char ch){
 		int code = (int)ch;
 		if (occurred[code]){
+			if (badChars[code])
+				return;
 			badChars[code] = true;
 			// remove it's node
 			nodeRemove(ch);
