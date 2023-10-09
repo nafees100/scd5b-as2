@@ -70,7 +70,7 @@ public class App {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Select an option:\n0. Exit\n1. Stack Demo\n" +
-				"2. Stream Demo");
+				"2. Stream Demo\n3. Merger Demo");
 		int choice = scanner.nextInt();
 
 		switch (choice){
@@ -78,6 +78,9 @@ public class App {
 				break;
 			case 1:
 				stackTest();
+				break;
+			case 3:
+				mergerTest();
 				break;
 			default:
 				System.out.println("Invalid choice.");

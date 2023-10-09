@@ -33,16 +33,22 @@ public class Merger{
 			// see? however many times for ran, the while wont
 			i += count + 1;
 		}
+
 		// now shift to remove the merged. O(n) after O(n) is still O(n)
 		int shift = 0;
+		i = 0;
 		while (i + shift < intervals.size()){
-			int[] interval = intervals.get(i + shift);
-			if (interval[0] == interval[1] && interval[0] == -1){
+			int[] a = new int[]{
+				intervals.get(i + shift)[0],
+				intervals.get(i + shift)[1]
+			};
+			if (a[0] == a[1] && a[0] == -1){
 				shift ++;
 				continue;
 			}
-			if (i != shift)
-				intervals.set(i, interval);
+			if (shift != 0){
+				intervals.set(i, a);
+			}
 			i ++;
 		}
 		// reduce length by shift
