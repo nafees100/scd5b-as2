@@ -6,9 +6,6 @@ import stack.*;
 import stream.*;
 
 public class App {
-	public String getGreeting() {
-		return "Hello World!";
-	}
 
 	private static void streamTest(){
 		FirstNonRepeatingStream stream = new FirstNonRepeatingStream();
