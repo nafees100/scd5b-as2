@@ -3,10 +3,10 @@ package scdas;
 import java.util.*;
 
 import stack.*;
+import merger.*;
 import stream.*;
 
 public class App {
-
 
 	private static void streamTest(){
 		FirstNonRepeatingStream stream = new FirstNonRepeatingStream();
@@ -57,10 +57,33 @@ public class App {
 		}
 	}
 
+	public static void mergerTest(){
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Enter number of intervals: ");
+		int count = scanner.nextInt();
+		ArrayList<int[]> intervals = new ArrayList<>();
+		for (int i = 0; i < count; i ++){
+			int[] interval = new int[2];
+			System.out.print("Enter start for interval " + (i + 1) + ": ");
+			interval[0] = scanner.nextInt();
+			System.out.print("Enter end for interval " + (i + 1) + ": ");
+			interval[1] = scanner.nextInt();
+			intervals.add(interval);
+		}
+		scanner.close();
+		Merger.mergeIntervals(intervals);
+
+		// print them
+		for (int i = 0; i < intervals.size(); i ++){
+			System.out.println("\t[" +
+					intervals.get(i)[0] + ", " + intervals.get(i)[1] + "]");
+		}
+	}
+
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Select an option:\n0. Exit\n1. Stack Demo\n" +
-				"2. Stream Demo");
+				"2. Stream Demo\n3. Merger Demo");
 		int choice = scanner.nextInt();
 
 		switch (choice){
@@ -71,6 +94,9 @@ public class App {
 				break;
 			case 2:
 				streamTest();
+        break;
+			case 3:
+				mergerTest();
 				break;
 			default:
 				System.out.println("Invalid choice.");
