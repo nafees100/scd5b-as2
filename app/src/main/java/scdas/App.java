@@ -3,6 +3,7 @@ package scdas;
 import java.util.*;
 
 import stack.*;
+import merger.*;
 
 public class App {
 
@@ -40,6 +41,29 @@ public class App {
 					else
 						System.out.println("Empty: No");
 			}
+		}
+	}
+
+	public static void mergerTest(){
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Enter number of intervals: ");
+		int count = scanner.nextInt();
+		ArrayList<int[]> intervals = new ArrayList<>();
+		for (int i = 0; i < count; i ++){
+			int[] interval = new int[2];
+			System.out.print("Enter start for interval " + (i + 1) + ": ");
+			interval[0] = scanner.nextInt();
+			System.out.print("Enter end for interval " + (i + 1) + ": ");
+			interval[1] = scanner.nextInt();
+			intervals.add(interval);
+		}
+		scanner.close();
+		Merger.mergeIntervals(intervals);
+
+		// print them
+		for (int i = 0; i < intervals.size(); i ++){
+			System.out.println("\t[" +
+					intervals.get(i)[0] + ", " + intervals.get(i)[1] + "]");
 		}
 	}
 
