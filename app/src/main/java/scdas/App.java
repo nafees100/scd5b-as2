@@ -4,8 +4,21 @@ import java.util.*;
 
 import stack.*;
 import merger.*;
+import stream.*;
 
 public class App {
+
+	private static void streamTest(){
+		FirstNonRepeatingStream stream = new FirstNonRepeatingStream();
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter a line full of characrters:");
+		String line = scanner.next();
+		byte[] bytes = line.getBytes();
+		for (int i = 0; i < bytes.length; i ++)
+			stream.add((char)bytes[i]);
+		System.out.println("first non repeating character: " +
+				stream.getFirstNonRepeating());
+		scanner.close();
 
 	private static void stackTest(){
 		GenericStack<Integer> stack = new GenericStack<>();
@@ -79,6 +92,9 @@ public class App {
 			case 1:
 				stackTest();
 				break;
+			case 2:
+				streamTest();
+        break;
 			case 3:
 				mergerTest();
 				break;
