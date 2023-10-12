@@ -19,6 +19,7 @@ public class App {
 		System.out.println("first non repeating character: " +
 				stream.getFirstNonRepeating());
 		scanner.close();
+	}
 
 	private static void stackTest(){
 		GenericStack<Integer> stack = new GenericStack<>();
@@ -94,7 +95,7 @@ public class App {
 				break;
 			case 2:
 				streamTest();
-        break;
+				break;
 			case 3:
 				mergerTest();
 				break;
